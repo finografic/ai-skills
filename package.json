@@ -1,0 +1,22 @@
+{
+  "name": "@finografic/ai-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Portable, task-specific AI behavior controls",
+  "author": "finografic",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finografic/ai-skills.git"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "compile": "pnpm -r compile",
+    "watch": "pnpm -r watch",
+    "package": "pnpm --filter ai-skills-loader package"
+  }
+}
