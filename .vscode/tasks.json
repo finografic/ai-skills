@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "compile:ai-skills-loader",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["--filter", "@finografic/ai-skills-loader", "compile"],
+      "group": "build",
+      "presentation": { "reveal": "silent" },
+      "problemMatcher": "$tsc"
+    },
+    {
+      "label": "watch:ai-skills-loader",
+      "type": "shell",
+      "command": "pnpm",
+      "args": ["--filter", "@finografic/ai-skills-loader", "watch"],
+      "group": "build",
+      "isBackground": true,
+      "presentation": { "reveal": "silent" },
+      "problemMatcher": "$tsc-watch"
+    }
+  ]
+}
