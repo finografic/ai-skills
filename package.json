@@ -25,7 +25,6 @@
     "compile": "pnpm -r compile",
     "watch": "pnpm -r watch",
     "package": "pnpm --filter ai-skills-loader package",
-    "·········· FORMATTING": "··················································",
     "format": "dprint fmt --diff",
     "format.check": "dprint check",
     "prepare": "simple-git-hooks"
