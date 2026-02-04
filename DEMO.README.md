@@ -1,14 +1,14 @@
 # 🤖 AI Agent Skills — Demo
 
-> **TL;DR**: Skills give you *controlled, task-specific* AI behavior.  
-> Instructions give you *global coding preferences*.  
+> **TL;DR**: Skills give you _controlled, task-specific_ AI behavior.
+> Instructions give you _global coding preferences_.
 > This demo shows why you need both.
 
 ---
 
 ## 🎯 What This Demo Shows
 
-1. **Skills are visually obvious** — You'll *know* when one activates
+1. **Skills are visually obvious** — You'll _know_ when one activates
 2. **Skills control execution flow** — PLAN → PAUSE → PROCEED for complex tasks
 3. **Skills are portable** — Same skill works across Copilot, Claude, Cursor, CLI
 4. **Skills ≠ Instructions** — Different problems, different solutions
@@ -20,12 +20,14 @@
 ### Demo 1: File Anatomy Skill
 
 **Without skill** (normal Copilot):
+
 ```
 You: "Show me the structure of utils/auth.ts"
 Copilot: "Here's the file: [dumps entire file]"
 ```
 
 **With skill**:
+
 ```
 You: "Show me the anatomy of utils/auth.ts"
 Copilot:
@@ -45,6 +47,7 @@ Copilot:
 ### Demo 2: Commit Craft Skill
 
 **Without skill**:
+
 ```
 You: "Write a commit message for these changes"
 Copilot: "Here's a commit message you could use:
@@ -55,6 +58,7 @@ Copilot: "Here's a commit message you could use:
 ```
 
 **With skill**:
+
 ```
 You: "Craft a commit for these changes"
 Copilot:
@@ -74,6 +78,7 @@ Copilot:
 ### Demo 3: Control Flow (PAUSE)
 
 **Without control skill** (real scenario):
+
 ```
 You: "Refactor the auth module to use the new API"
 Copilot: [immediately starts changing 12 files]
@@ -82,6 +87,7 @@ Copilot: [immediately starts changing 12 files]
 ```
 
 **With control skill**:
+
 ```
 You: "Refactor the auth module to use the new API"
 Copilot:
@@ -101,14 +107,14 @@ PLAN:
 
 ## 📌 Skills vs Instructions — The Key Difference
 
-|                     | **Agent Skills**                          | **Copilot Instructions**               |
-|---------------------|-------------------------------------------|----------------------------------------|
-| **Location**        | `~/ai-skills/` (portable)                 | `.github/instructions/` (repo-bound)   |
-| **Scope**           | Task-specific, loaded on demand           | Always on (or glob-filtered)           |
-| **Content**         | Structure, examples, validation, flow     | Preferences and rules only             |
-| **Control**         | PLAN → PAUSE → PROCEED                    | None                                   |
-| **Portability**     | Any AI tool                               | VS Code / GitHub only                  |
-| **Maintenance**     | Central repo, distribute to projects      | Per-repo duplication                   |
+|                 | **Agent Skills**                      | **Copilot Instructions**             |
+| --------------- | ------------------------------------- | ------------------------------------ |
+| **Location**    | `~/ai-skills/` (portable)             | `.github/instructions/` (repo-bound) |
+| **Scope**       | Task-specific, loaded on demand       | Always on (or glob-filtered)         |
+| **Content**     | Structure, examples, validation, flow | Preferences and rules only           |
+| **Control**     | PLAN → PAUSE → PROCEED                | None                                 |
+| **Portability** | Any AI tool                           | VS Code / GitHub only                |
+| **Maintenance** | Central repo, distribute to projects  | Per-repo duplication                 |
 
 ### Mental Model
 
@@ -132,12 +138,12 @@ PLAN:
 
 ## 📁 Skills Included in This Demo
 
-| Skill | Trigger Words | Purpose |
-|-------|---------------|---------|
-| `00-control` | *(always active)* | Concise responses, PLAN→PAUSE→PROCEED |
-| `01-file-anatomy` | "anatomy", "structure breakdown" | Visual file section breakdown |
-| `02-pr-diff-analysis` | "analyze PR", "review diff" | Risk-aware PR analysis |
-| `03-commit-craft` | "commit message", "craft commit" | Conventional commit generator |
+| Skill                 | Trigger Words                    | Purpose                               |
+| --------------------- | -------------------------------- | ------------------------------------- |
+| `00-control`          | _(always active)_                | Concise responses, PLAN→PAUSE→PROCEED |
+| `01-file-anatomy`     | "anatomy", "structure breakdown" | Visual file section breakdown         |
+| `02-pr-diff-analysis` | "analyze PR", "review diff"      | Risk-aware PR analysis                |
+| `03-commit-craft`     | "commit message", "craft commit" | Conventional commit generator         |
 
 ---
 
@@ -163,16 +169,16 @@ PLAN:
 
 ## ❓ FAQ
 
-**Q: Why not just add more `.github/instructions`?**  
+**Q: Why not just add more `.github/instructions`?**
 A: Instructions are "always on" behavior preferences. Skills are "when needed" task execution with control flow. Different tools for different problems.
 
-**Q: Can skills reference other skills?**  
+**Q: Can skills reference other skills?**
 A: The control skill (`00-control`) acts as a base layer. Other skills inherit its principles (concise, PAUSE when complex).
 
-**Q: What about `.github/` restrictions?**  
+**Q: What about `.github/` restrictions?**
 A: Skills live outside `.github/`. No PRs, no red tape. Maintained in a central repo, delivered via extension.
 
-**Q: Will this work with Claude / Cursor / CLI?**  
+**Q: Will this work with Claude / Cursor / CLI?**
 A: Yes. Skills are plain markdown. The YAML header is for tooling; the content works anywhere you can paste context.
 
 ---
@@ -186,4 +192,4 @@ A: Yes. Skills are plain markdown. The YAML header is for tooling; the content w
 
 ---
 
-*Built to demonstrate controlled AI interaction patterns for [Org Name].*
+_Built to demonstrate controlled AI interaction patterns for [Org Name]._
