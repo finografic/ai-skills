@@ -1,34 +1,43 @@
 {
-  "name": "@finografic/ai-skills-loader",
-  "displayName": "AI Skills Loader",
-  "description": "Load AI skills into Copilot Chat",
-  "version": "0.1.0",
+  "name": "ai-skills-loader",
   "private": true,
-  "publisher": "finografic",
-  "author": "finografic",
+
+  "displayName": "AI Skills Loader",
+  "description": "Load AI skills into Copilot Chat with native sync support",
+  "version": "0.2.0",
+  "publisher": "internal",
   "license": "UNLICENSED",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/finografic/ai-skills.git",
-    "directory": "ai-skills-loader"
-  },
   "engines": {
     "vscode": "^1.85.0"
   },
-  "categories": [
-    "Other"
-  ],
+  "categories": ["Other"],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "ai-skills.load",
-        "title": "AI Skills: Load Skill"
+        "title": "AI Skills: Load Skill to Clipboard"
       },
       {
         "command": "ai-skills.loadToCopilot",
         "title": "AI Skills: Load & Open Copilot"
+      },
+      {
+        "command": "ai-skills.syncToCopilot",
+        "title": "AI Skills: Sync to Copilot (Native)"
+      },
+      {
+        "command": "ai-skills.unsyncFromCopilot",
+        "title": "AI Skills: Remove from Copilot"
+      },
+      {
+        "command": "ai-skills.syncStatus",
+        "title": "AI Skills: Show Sync Status"
+      },
+      {
+        "command": "ai-skills.openCopilotFolder",
+        "title": "AI Skills: Open Copilot Prompts Folder"
       }
     ],
     "keybindings": [
@@ -54,7 +63,7 @@
         "ai-skills.alwaysIncludeControl": {
           "type": "boolean",
           "default": true,
-          "description": "Always prepend 00-control skill"
+          "description": "Always include control directives with skills"
         }
       }
     }
