@@ -133,7 +133,7 @@ export function activate(context: vscode.ExtensionContext) {
     // Try direct insertion into Copilot chat
     try {
       await vscode.commands.executeCommand('workbench.action.chat.open', {
-        query: `@agent ${result.payload}`
+        query: result.payload
       });
       vscode.window.showInformationMessage(`✅ Skill "${result.skill.name}" loaded`);
     } catch {
