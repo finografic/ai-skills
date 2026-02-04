@@ -6,11 +6,25 @@
   "version": "0.2.0",
   "publisher": "internal",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finografic/ai-skills.git",
+    "directory": "ai-skills-loader"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
+  ],
+  "icon": "icon.png",
+  "files": [
+    "out/**",
+    "package.json",
+    "LICENSE",
+    "icon.png",
+    "README.md",
+    "README.V1.md"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -70,12 +84,17 @@
     }
   },
   "scripts": {
-    "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+    "compile": "tsc -p ./",
+    "format": "dprint fmt --diff",
+    "format:check": "dprint check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package --no-dependencies"
   },
   "devDependencies": {
-    "@types/node": "^20.19.31",
+    "@types/node": "^24.3.0",
     "@types/vscode": "^1.85.0",
     "@vscode/vsce": "^3.2.1",
     "typescript": "^5.3.0"

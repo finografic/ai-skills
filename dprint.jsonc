@@ -1,4 +1,252 @@
 {
+  // REF: https://dprint.dev/config
   "$schema": "https://dprint.dev/schemas/v0.json",
-  "extends": "node_modules/@finografic/dprint-config/dprint.jsonc"
+  "lineWidth": 100,
+  "indentWidth": 2,
+  "useTabs": false,
+  "newLineKind": "lf",
+  "json": {
+    "indentWidth": 2,
+    "useTabs": false,
+    "trailingCommas": "jsonc",
+    "associations": [
+      "**/*.json",
+      "**/*.jsonc",
+      ".eslintrc.json",
+      "dprint.jsonc",
+    ],
+  },
+  "typescript": {
+    /* indentation and whitespace */
+    "indentWidth": 2,
+    "useTabs": false,
+    "newLineKind": "lf",
+    "lineWidth": 100,
+
+    /* semicolons and quotes */
+    "semiColons": "prefer", // default: "prefer", setting: "always" ??
+    "quoteStyle": "preferSingle",
+    "quoteProps": "asNeeded",
+
+    /* trailing commas */
+    "trailingCommas": "onlyMultiLine",
+
+    /* object and type literal spacing */
+    "objectExpression.spaceSurroundingProperties": true,
+    "objectPattern.spaceSurroundingProperties": true,
+    "typeLiteral.spaceSurroundingProperties": true,
+
+    /* imports and exports */
+    // NOTE: fixed 2026-01-17 to AVOID CONFLICT with eslint-plugin-simple-import-sort
+    // "importDeclaration.sortNamedImports": "caseInsensitive",
+    "importDeclaration.sortNamedImports": "maintain",
+    "importDeclaration.sortTypeOnlyImports": "none",
+    "importDeclaration.spaceSurroundingNamedImports": true,
+    "importDeclaration.trailingCommas": "onlyMultiLine",
+
+    // NOTE: fixed 2026-01-17 to AVOID CONFLICT with eslint-plugin-simple-import-sort
+    // "exportDeclaration.sortNamedExports": "caseInsensitive",
+    "exportDeclaration.sortNamedExports": "maintain",
+    "exportDeclaration.sortTypeOnlyExports": "none",
+    "exportDeclaration.spaceSurroundingNamedExports": true,
+    "exportDeclaration.trailingCommas": "onlyMultiLine",
+
+    // NOTE: fixed 2026-01-17 to AVOID CONFLICT with eslint-plugin-simple-import-sort
+    // "module.sortImportDeclarations": "caseInsensitive",
+    // "module.sortExportDeclarations": "caseInsensitive",
+    "module.sortImportDeclarations": "maintain",
+    "module.sortExportDeclarations": "maintain",
+
+    /* braces (default, conservative) */
+    "bracePosition": "sameLineUnlessHanging",
+
+    /* parentheses spacing */
+    "arguments.spaceAround": false,
+    "parameters.spaceAround": false,
+    "parenExpression.spaceAround": false,
+
+    /* comments */
+    "commentLine.forceSpaceAfterSlashes": true,
+
+    /* ignores */
+    "ignoreFileCommentText": "dprint-ignore-file",
+    "ignoreNodeCommentText": "dprint-ignore",
+
+    /* control flow: braces and layout */
+    "ifStatement.useBraces": "whenNotSingleLine",
+    "ifStatement.bracePosition": "sameLineUnlessHanging",
+    "ifStatement.spaceAfterIfKeyword": true,
+    "ifStatement.spaceAround": false,
+    "ifStatement.singleBodyPosition": "maintain",
+    "ifStatement.nextControlFlowPosition": "sameLine",
+
+    "forStatement.useBraces": "whenNotSingleLine",
+    "forStatement.bracePosition": "sameLineUnlessHanging",
+    "forStatement.spaceAfterForKeyword": true,
+    "forStatement.spaceAfterSemiColons": true,
+    "forStatement.spaceAround": false,
+    "forStatement.singleBodyPosition": "maintain",
+
+    "forOfStatement.useBraces": "whenNotSingleLine",
+    "forOfStatement.bracePosition": "sameLineUnlessHanging",
+    "forOfStatement.spaceAfterForKeyword": true,
+    "forOfStatement.spaceAround": false,
+    "forOfStatement.singleBodyPosition": "maintain",
+
+    "forInStatement.useBraces": "whenNotSingleLine",
+    "forInStatement.bracePosition": "sameLineUnlessHanging",
+    "forInStatement.spaceAfterForKeyword": true,
+    "forInStatement.spaceAround": false,
+    "forInStatement.singleBodyPosition": "maintain",
+
+    "whileStatement.bracePosition": "sameLineUnlessHanging",
+    "whileStatement.spaceAfterWhileKeyword": true,
+    "whileStatement.singleBodyPosition": "maintain",
+
+    "doWhileStatement.bracePosition": "sameLineUnlessHanging",
+    "doWhileStatement.spaceAfterWhileKeyword": true,
+    "doWhileStatement.spaceAround": false,
+    "doWhileStatement.nextControlFlowPosition": "sameLine",
+
+    "switchStatement.bracePosition": "sameLineUnlessHanging",
+    "switchStatement.spaceAround": false,
+
+    "tryStatement.bracePosition": "sameLineUnlessHanging",
+    "tryStatement.nextControlFlowPosition": "sameLine",
+
+    /* functions and methods */
+    "functionDeclaration.bracePosition": "sameLineUnlessHanging",
+    "functionDeclaration.spaceBeforeParentheses": false,
+
+    "functionExpression.bracePosition": "sameLineUnlessHanging",
+    "functionExpression.spaceAfterFunctionKeyword": false,
+    "functionExpression.spaceBeforeParentheses": false,
+
+    "arrowFunction.bracePosition": "sameLineUnlessHanging",
+    "arrowFunction.useParentheses": "maintain",
+
+    "method.bracePosition": "sameLineUnlessHanging",
+    "method.spaceBeforeParentheses": false,
+
+    "constructor.bracePosition": "sameLineUnlessHanging",
+    "constructor.spaceBeforeParentheses": false,
+
+    "getAccessor.bracePosition": "sameLineUnlessHanging",
+    "getAccessor.spaceBeforeParentheses": false,
+
+    "setAccessor.bracePosition": "sameLineUnlessHanging",
+    "setAccessor.spaceBeforeParentheses": false,
+
+    /* types and generics */
+    "typeLiteral.separatorKind": "semiColon",
+    "typeLiteral.separatorKind.singleLine": "semiColon",
+    "typeLiteral.separatorKind.multiLine": "semiColon",
+    "typeLiteral.trailingCommas": "onlyMultiLine",
+
+    "interfaceDeclaration.bracePosition": "sameLineUnlessHanging",
+
+    "unionAndIntersectionType.preferSingleLine": false,
+    "unionAndIntersectionType.preferHanging": false,
+
+    "tupleType.preferSingleLine": false,
+    "tupleType.trailingCommas": "onlyMultiLine",
+
+    "typeParameters.preferSingleLine": false,
+    "typeParameters.trailingCommas": "onlyMultiLine",
+
+    "conditionalType.preferSingleLine": false,
+    "conditionalType.operatorPosition": "nextLine",
+
+    "mappedType.preferSingleLine": false,
+
+    /* enums and modules */
+    "enumDeclaration.bracePosition": "sameLineUnlessHanging",
+    "enumDeclaration.memberSpacing": "maintain",
+    "enumDeclaration.trailingCommas": "onlyMultiLine",
+
+    "moduleDeclaration.bracePosition": "sameLineUnlessHanging",
+
+    "staticBlock.bracePosition": "sameLineUnlessHanging",
+
+    /* expressions and operators */
+    "binaryExpression.operatorPosition": "nextLine",
+    "binaryExpression.preferSingleLine": false,
+    "binaryExpression.spaceSurroundingBitwiseAndArithmeticOperator": true,
+
+    "conditionalExpression.operatorPosition": "nextLine",
+    "conditionalExpression.preferSingleLine": false,
+
+    "memberExpression.linePerExpression": false,
+    "memberExpression.preferSingleLine": false,
+
+    "computed.preferSingleLine": false,
+
+    "operatorPosition": "nextLine",
+
+    /* parameters, arguments, and lists */
+    "parameters.preferHanging": "never",
+    "parameters.preferSingleLine": false,
+    "parameters.trailingCommas": "onlyMultiLine",
+
+    "arguments.preferHanging": "never",
+    "arguments.preferSingleLine": false,
+    "arguments.trailingCommas": "onlyMultiLine",
+
+    "typeParameters.preferHanging": "never",
+
+    "tupleType.preferHanging": "never",
+    "tupleType.spaceAround": false,
+
+    /* objects, arrays, and patterns */
+    "objectExpression.preferHanging": false,
+    "objectExpression.preferSingleLine": false,
+    "objectExpression.trailingCommas": "onlyMultiLine",
+
+    "objectPattern.preferHanging": false,
+    "objectPattern.preferSingleLine": false,
+    "objectPattern.trailingCommas": "onlyMultiLine",
+
+    "arrayExpression.preferHanging": "never",
+    "arrayExpression.preferSingleLine": false,
+    "arrayExpression.spaceAround": false,
+    "arrayExpression.trailingCommas": "onlyMultiLine",
+
+    "arrayPattern.preferHanging": false,
+    "arrayPattern.preferSingleLine": false,
+    "arrayPattern.spaceAround": false,
+    "arrayPattern.trailingCommas": "onlyMultiLine",
+
+    /* jsx and tsx */
+    "jsx.quoteStyle": "preferDouble",
+
+    "jsx.multiLineParens": "prefer",
+
+    "jsx.bracketPosition": "nextLine",
+    "jsxOpeningElement.bracketPosition": "nextLine",
+    "jsxSelfClosingElement.bracketPosition": "nextLine",
+    "jsxSelfClosingElement.spaceBeforeSlash": true,
+
+    "jsxAttributes.preferHanging": false,
+    "jsxAttributes.preferSingleLine": false,
+
+    "jsxElement.preferSingleLine": false,
+
+    "jsxExpressionContainer.spaceSurroundingExpression": false,
+
+    "jsx.forceNewLinesSurroundingContent": false,
+  },
+  "excludes": [
+    "node_modules",
+    "**/node_modules",
+    "**/out",
+    "**/*.vsix",
+    "package-lock.json",
+    "**/*.map",
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.95.13.wasm",
+    "https://plugins.dprint.dev/json-0.21.1.wasm",
+    "https://plugins.dprint.dev/g-plane/malva-v0.15.2.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm",
+  ],
 }

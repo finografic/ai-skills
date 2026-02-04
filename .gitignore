@@ -45,10 +45,6 @@ npm-debug.log*
 # Build isolation workspace
 .temp/
 
-# Turbo cache
-.turbo/
-**/.turbo
-
 # Tsup cache
 **/.tsup
 
@@ -78,16 +74,10 @@ logs/
 # macOS
 .DS_Store
 .AppleDouble
-.LSOverride
+!Icon?
 
 # Linux
 *~
-
-# =============================================================================
-# CURSOR CHATS
-# =============================================================================
-
-.cursor/chats/
 
 # =============================================================================
 # WEB SERVER DEFAULT FOLDERS
@@ -113,13 +103,3 @@ debug.log
 # Extracted archive (source files)
 files/
 
-# =============================================================================
-# VS CODE (OPTIONAL - UNCOMMENT IF NEEDED)
-# =============================================================================
-
-# .vscode/*
-# !.vscode/launch.json
-# !.vscode/*.code-snippets
-# !.vscode/settings.json
-# !.vscode/tasks.json
-config/dist
