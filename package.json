@@ -21,7 +21,6 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "build": "pnpm -r build",
     "compile": "pnpm -r compile",
     "watch": "pnpm -r watch",
     "package": "pnpm --filter ai-skills-loader package",

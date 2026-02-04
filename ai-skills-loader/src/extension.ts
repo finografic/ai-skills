@@ -65,22 +65,34 @@ function loadSkills(): Skill[] {
   return skills;
 }
 
+function getSkillBody(content: string): string {
+  // Strip YAML frontmatter, return just the markdown body
+  const match = content.match(/^---\n[\s\S]*?\n---\n*([\s\S]*)$/);
+  return match ? match[1].trim() : content;
+}
+
 function buildSkillPayload(skills: Skill[], selected: Skill): string {
   const config = vscode.workspace.getConfiguration('ai-skills');
   const includeControl = config.get<boolean>('alwaysIncludeControl') ?? true;
 
   let payload = '';
 
-  // Add control skill (hidden in comment block so it's not visually noisy)
+  // Add control skill (compressed into HTML comment - functional but hidden)
   if (includeControl && !selected.filename.startsWith('00-')) {
     const controlSkill = skills.find(s => s.filename.startsWith('00-'));
     if (controlSkill) {
-      payload += `<!--\n[BASE SKILL: ${controlSkill.name}]\n${controlSkill.content}\n-->\n\n`;
+      const controlBody = getSkillBody(controlSkill.content)
+        .replace(/\n{2,}/g, ' ')
+        .replace(/\n/g, ' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+      payload += `<!-- ${controlBody} -->\n\n`;
     }
   }
 
-  // Add selected skill (visible)
-  payload += `**[SKILL: ${selected.name}]**\n\n${selected.content}\n\n---\n\n`;
+  // Add selected skill - minimal header, body only (no YAML frontmatter)
+  const skillBody = getSkillBody(selected.content);
+  payload += `⚡ **${selected.name}**\n\n${skillBody}\n\n---\n\n`;
 
   return payload;
 }
@@ -125,23 +137,24 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.window.showInformationMessage(`✅ Skill "${result.skill.name}" copied to clipboard`);
   });
 
-  // Command: Load skill and open Copilot with pre-filled prompt
+  // Command: Load skill and open Copilot (compose mode - pre-fill without sending)
   const loadToCopilotCmd = vscode.commands.registerCommand('ai-skills.loadToCopilot', async () => {
     const result = await selectSkill();
     if (!result) return;
 
-    // Try direct insertion into Copilot chat
+    // Open chat with pre-filled skill content (isPartialQuery prevents auto-send!)
     try {
       await vscode.commands.executeCommand('workbench.action.chat.open', {
-        query: result.payload
+        query: result.payload,
+        isPartialQuery: true  // ← This prevents auto-send!
       });
-      vscode.window.showInformationMessage(`✅ Skill "${result.skill.name}" loaded`);
+      vscode.window.showInformationMessage(`⚡ ${result.skill.name} loaded — add context and send`);
     } catch {
-      // Fallback to clipboard if direct insertion fails
+      // Fallback to clipboard if the command fails
       await vscode.env.clipboard.writeText(result.payload);
       await vscode.commands.executeCommand('workbench.panel.chat.view.copilot.focus');
       vscode.window.showInformationMessage(
-        `✅ Skill "${result.skill.name}" ready — paste into chat (Cmd+V)`
+        `⚡ ${result.skill.name} ready — Cmd+V to paste, add context, then send`
       );
     }
   });
