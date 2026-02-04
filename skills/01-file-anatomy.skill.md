@@ -1,6 +1,7 @@
 ---
 name: file-anatomy
-description: Analyze and display file structure with clear visual sections. Triggers on "anatomy", "structure breakdown", "show sections", "dissect file". Demonstrates skill activation with distinctive output format.
+description: Analyze & display file structure with clear visual sections. Triggers on "anatomy", "structure breakdown", "show sections", "dissect file". Demonstrates skill activation with distinctive output format.
+mode: agent
 ---
 
 # File Anatomy Skill
@@ -13,7 +14,7 @@ Always use this exact structure:
 
 ```
 ═══════════════════════════════════════════
-📁 FILE ANATOMY: {filename}
+✅ FILE ANATOMY: {filename}
 ═══════════════════════════════════════════
 
 ┌─────────────────────────────────────────┐

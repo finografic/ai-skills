@@ -62,7 +62,6 @@
   "scripts": {
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "build": "tsc -p ./",
     "package": "vsce package"
   },
   "devDependencies": {

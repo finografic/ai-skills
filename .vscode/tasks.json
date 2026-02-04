@@ -5,6 +5,11 @@
       "label": "compile:ai-skills-loader",
       "type": "shell",
       "command": "pnpm",
+      "options": {
+        "env": {
+          "PATH": "/Users/justin/.nvm/versions/node/v24.3.0/bin:/Users/justin/Library/pnpm:${env:PATH}"
+        }
+      },
       "args": ["--filter", "@finografic/ai-skills-loader", "compile"],
       "group": "build",
       "presentation": { "reveal": "silent" },
@@ -14,6 +19,11 @@
       "label": "watch:ai-skills-loader",
       "type": "shell",
       "command": "pnpm",
+      "options": {
+        "env": {
+          "PATH": "/Users/justin/.nvm/versions/node/v24.3.0/bin:/Users/justin/Library/pnpm:${env:PATH}"
+        }
+      },
       "args": ["--filter", "@finografic/ai-skills-loader", "watch"],
       "group": "build",
       "isBackground": true,
