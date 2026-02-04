@@ -1,27 +1,10 @@
 {
   "npm.packageManager": "pnpm",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "prettier.configPath": "./prettier.config.mjs",
   "eslint.enable": true,
   "eslint.useFlatConfig": true,
-  "prettier.enable": false,
-  "[javascript]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[toml]": {
-    "editor.defaultFormatter": "dprint.dprint"
-  },
   "markdownlint.config": {
     "default": true,
     "MD025": false,
