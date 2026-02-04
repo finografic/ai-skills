@@ -20,15 +20,17 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "workspaces": [
+    "ai-skills-loader"
+  ],
   "scripts": {
-    "compile": "pnpm -r compile",
-    "watch": "pnpm -r watch",
-    "package": "pnpm --filter ai-skills-loader package",
+    "compile": "npm run compile --workspaces",
+    "watch": "npm run watch --workspaces",
+    "package": "npm run package --workspace=ai-skills-loader",
     "format": "dprint fmt --diff",
     "format.check": "dprint check",
     "prepare": "simple-git-hooks"
   },
-  "packageManager": "pnpm@10.8.0",
   "engines": {
     "node": ">=20"
   },
