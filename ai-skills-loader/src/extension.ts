@@ -1,7 +1,7 @@
-import * as vscode from 'vscode';
 import * as fs from 'fs';
-import * as path from 'path';
 import * as os from 'os';
+import * as path from 'path';
+import * as vscode from 'vscode';
 
 interface Skill {
   name: string;
@@ -55,7 +55,7 @@ function parseSkillFile(filepath: string): Skill | null {
       description: descMatch?.[1] || '',
       filename,
       filepath,
-      content
+      content,
     };
   } catch {
     return null;
@@ -71,8 +71,9 @@ function loadSkills(): Skill[] {
     return [];
   }
 
-  const files = fs.readdirSync(skillsPath)
-    .filter(f => f.endsWith('.skill.md'))
+  const files = fs
+    .readdirSync(skillsPath)
+    .filter((f) => f.endsWith('.skill.md'))
     .sort();
 
   const skills: Skill[] = [];
@@ -90,16 +91,13 @@ function getSkillBody(content: string): string {
   return match ? match[1].trim() : content;
 }
 
-function getControlDirectives(controlSkill: Skill): string {
-  // Extract just the essential control directives, ultra-compact
-  const body = getSkillBody(controlSkill.content);
-
+function getControlDirectives(): string {
   // Key directives only - one line each
   const essentials = [
     'Be concise. Sacrifice grammar for brevity.',
     'Simple tasks → act immediately.',
     'Complex tasks → PLAN → PAUSE → PROCEED.',
-    'No long explanations. No asking permission for obvious tasks.'
+    'No long explanations. No asking permission for obvious tasks.',
   ];
 
   return essentials.join(' ');
@@ -123,9 +121,9 @@ function buildSkillPayload(skills: Skill[], selected: Skill): string {
 
   // Control directives at the end (less visually intrusive)
   if (includeControl && !selected.filename.startsWith('00-')) {
-    const controlSkill = skills.find(s => s.filename.startsWith('00-'));
+    const controlSkill = skills.find((s) => s.filename.startsWith('00-'));
     if (controlSkill) {
-      payload += `---\n_${getControlDirectives(controlSkill)}_\n`;
+      payload += `---\n_${getControlDirectives()}_\n`;
     }
   }
 
@@ -140,19 +138,19 @@ async function selectSkill(): Promise<{ payload: string; skill: Skill } | undefi
   }
 
   // Filter out control skill from picker (it's auto-included)
-  const pickableSkills = skills.filter(s => !s.filename.startsWith('00-'));
+  const pickableSkills = skills.filter((s) => !s.filename.startsWith('00-'));
 
-  const items = pickableSkills.map(s => ({
+  const items = pickableSkills.map((s) => ({
     label: s.name,
     description: s.filename,
     detail: s.description,
-    skill: s
+    skill: s,
   }));
 
   const picked = await vscode.window.showQuickPick(items, {
     placeHolder: 'Select a skill to load',
     matchOnDescription: true,
-    matchOnDetail: true
+    matchOnDetail: true,
   });
 
   if (!picked) return;
@@ -162,7 +160,6 @@ async function selectSkill(): Promise<{ payload: string; skill: Skill } | undefi
 }
 
 export function activate(context: vscode.ExtensionContext) {
-
   // Command: Load skill to clipboard
   const loadCmd = vscode.commands.registerCommand('ai-skills.load', async () => {
     const result = await selectSkill();
@@ -181,7 +178,7 @@ export function activate(context: vscode.ExtensionContext) {
     try {
       await vscode.commands.executeCommand('workbench.action.chat.open', {
         query: result.payload,
-        isPartialQuery: true  // ← This prevents auto-send!
+        isPartialQuery: true, // ← This prevents auto-send!
       });
       vscode.window.showInformationMessage(`⚡ ${result.skill.name} loaded — add context and send`);
     } catch {
@@ -189,7 +186,7 @@ export function activate(context: vscode.ExtensionContext) {
       await vscode.env.clipboard.writeText(result.payload);
       await vscode.commands.executeCommand('workbench.panel.chat.view.copilot.focus');
       vscode.window.showInformationMessage(
-        `⚡ ${result.skill.name} ready — Cmd+V to paste, add context, then send`
+        `⚡ ${result.skill.name} ready — Cmd+V to paste, add context, then send`,
       );
     }
   });
@@ -210,7 +207,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Filter out control skill - don't sync as standalone
-    const syncableSkills = skills.filter(s => !s.filename.startsWith('00-'));
+    const syncableSkills = skills.filter((s) => !s.filename.startsWith('00-'));
 
     let synced = 0;
     let errors: string[] = [];
@@ -241,59 +238,70 @@ export function activate(context: vscode.ExtensionContext) {
 
     if (errors.length === 0) {
       vscode.window.showInformationMessage(
-        `✅ Synced ${synced} skills to Copilot. Use /${syncableSkills[0]?.name.replace('file-', '')} in chat!`
+        `✅ Synced ${synced} skills to Copilot. Use /${
+          syncableSkills[0]?.name.replace('file-', '')
+        } in chat!`,
       );
     } else {
       vscode.window.showWarningMessage(
-        `Synced ${synced} skills, ${errors.length} failed. Check output for details.`
+        `Synced ${synced} skills, ${errors.length} failed. Check output for details.`,
       );
     }
   });
 
   // Command: Remove synced skills from Copilot
-  const unsyncFromCopilotCmd = vscode.commands.registerCommand('ai-skills.unsyncFromCopilot', async () => {
-    const copilotDir = getCopilotPromptsDir();
+  const unsyncFromCopilotCmd = vscode.commands.registerCommand(
+    'ai-skills.unsyncFromCopilot',
+    async () => {
+      const copilotDir = getCopilotPromptsDir();
 
-    if (!fs.existsSync(copilotDir)) {
-      vscode.window.showInformationMessage('No Copilot prompts directory found');
-      return;
-    }
+      if (!fs.existsSync(copilotDir)) {
+        vscode.window.showInformationMessage('No Copilot prompts directory found');
+        return;
+      }
 
-    // Find our synced skills (files that match our naming pattern)
-    const files = fs.readdirSync(copilotDir);
-    const ourFiles = files.filter(f =>
-      f.endsWith('.prompt.md') &&
-      (f.includes('anatomy') || f.includes('diff') || f.includes('commit') || f.includes('craft'))
-    );
+      // Find our synced skills (files that match our naming pattern)
+      const files = fs.readdirSync(copilotDir);
+      const ourFiles = files.filter(
+        (f) =>
+          f.endsWith('.prompt.md')
+          && (f.includes('anatomy')
+            || f.includes('diff')
+            || f.includes('commit')
+            || f.includes('craft')),
+      );
 
-    if (ourFiles.length === 0) {
-      vscode.window.showInformationMessage('No synced skills found to remove');
-      return;
-    }
+      if (ourFiles.length === 0) {
+        vscode.window.showInformationMessage('No synced skills found to remove');
+        return;
+      }
 
-    const confirm = await vscode.window.showWarningMessage(
-      `Remove ${ourFiles.length} synced skill(s) from Copilot?`,
-      'Yes, Remove',
-      'Cancel'
-    );
+      const confirm = await vscode.window.showWarningMessage(
+        `Remove ${ourFiles.length} synced skill(s) from Copilot?`,
+        'Yes, Remove',
+        'Cancel',
+      );
 
-    if (confirm !== 'Yes, Remove') return;
+      if (confirm !== 'Yes, Remove') return;
 
-    let removed = 0;
-    for (const file of ourFiles) {
-      try {
-        fs.unlinkSync(path.join(copilotDir, file));
-        removed++;
-      } catch { /* ignore */ }
-    }
+      let removed = 0;
+      for (const file of ourFiles) {
+        try {
+          fs.unlinkSync(path.join(copilotDir, file));
+          removed++;
+        } catch {
+          /* ignore */
+        }
+      }
 
-    vscode.window.showInformationMessage(`✅ Removed ${removed} skills from Copilot`);
-  });
+      vscode.window.showInformationMessage(`✅ Removed ${removed} skills from Copilot`);
+    },
+  );
 
   // Command: Show sync status
   const syncStatusCmd = vscode.commands.registerCommand('ai-skills.syncStatus', async () => {
     const copilotDir = getCopilotPromptsDir();
-    const skills = loadSkills().filter(s => !s.filename.startsWith('00-'));
+    const skills = loadSkills().filter((s) => !s.filename.startsWith('00-'));
 
     let status = `**Copilot Prompts Directory:**\n\`${copilotDir}\`\n\n`;
 
@@ -301,7 +309,7 @@ export function activate(context: vscode.ExtensionContext) {
       status += '⚠️ Directory does not exist\n';
     } else {
       const files = fs.readdirSync(copilotDir);
-      const promptFiles = files.filter(f => f.endsWith('.prompt.md') || f.endsWith('.md'));
+      const promptFiles = files.filter((f) => f.endsWith('.prompt.md') || f.endsWith('.md'));
       status += `**Found ${promptFiles.length} prompt file(s)**\n\n`;
 
       // Check which of our skills are synced
@@ -317,17 +325,27 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   // Command: Open Copilot prompts folder
-  const openCopilotFolderCmd = vscode.commands.registerCommand('ai-skills.openCopilotFolder', async () => {
-    const copilotDir = getCopilotPromptsDir();
+  const openCopilotFolderCmd = vscode.commands.registerCommand(
+    'ai-skills.openCopilotFolder',
+    async () => {
+      const copilotDir = getCopilotPromptsDir();
 
-    if (!fs.existsSync(copilotDir)) {
-      fs.mkdirSync(copilotDir, { recursive: true });
-    }
+      if (!fs.existsSync(copilotDir)) {
+        fs.mkdirSync(copilotDir, { recursive: true });
+      }
 
-    await vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(copilotDir));
-  });
+      await vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(copilotDir));
+    },
+  );
 
-  context.subscriptions.push(loadCmd, loadToCopilotCmd, syncToCopilotCmd, unsyncFromCopilotCmd, syncStatusCmd, openCopilotFolderCmd);
+  context.subscriptions.push(
+    loadCmd,
+    loadToCopilotCmd,
+    syncToCopilotCmd,
+    unsyncFromCopilotCmd,
+    syncStatusCmd,
+    openCopilotFolderCmd,
+  );
 }
 
 export function deactivate() {}

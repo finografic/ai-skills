@@ -1,7 +1,7 @@
-import * as vscode from 'vscode';
 import * as fs from 'fs';
-import * as path from 'path';
 import * as os from 'os';
+import * as path from 'path';
+import * as vscode from 'vscode';
 
 interface Skill {
   name: string;
@@ -36,7 +36,7 @@ function parseSkillFile(filepath: string): Skill | null {
       description: descMatch?.[1] || '',
       filename,
       filepath,
-      content
+      content,
     };
   } catch {
     return null;
@@ -52,8 +52,9 @@ function loadSkills(): Skill[] {
     return [];
   }
 
-  const files = fs.readdirSync(skillsPath)
-    .filter(f => f.endsWith('.skill.md'))
+  const files = fs
+    .readdirSync(skillsPath)
+    .filter((f) => f.endsWith('.skill.md'))
     .sort();
 
   const skills: Skill[] = [];
@@ -79,7 +80,7 @@ function buildSkillPayload(skills: Skill[], selected: Skill): string {
 
   // Add control skill (compressed into HTML comment - functional but hidden)
   if (includeControl && !selected.filename.startsWith('00-')) {
-    const controlSkill = skills.find(s => s.filename.startsWith('00-'));
+    const controlSkill = skills.find((s) => s.filename.startsWith('00-'));
     if (controlSkill) {
       const controlBody = getSkillBody(controlSkill.content)
         .replace(/\n{2,}/g, ' ')
@@ -105,19 +106,19 @@ async function selectSkill(): Promise<{ payload: string; skill: Skill } | undefi
   }
 
   // Filter out control skill from picker (it's auto-included)
-  const pickableSkills = skills.filter(s => !s.filename.startsWith('00-'));
+  const pickableSkills = skills.filter((s) => !s.filename.startsWith('00-'));
 
-  const items = pickableSkills.map(s => ({
+  const items = pickableSkills.map((s) => ({
     label: s.name,
     description: s.filename,
     detail: s.description,
-    skill: s
+    skill: s,
   }));
 
   const picked = await vscode.window.showQuickPick(items, {
     placeHolder: 'Select a skill to load',
     matchOnDescription: true,
-    matchOnDetail: true
+    matchOnDetail: true,
   });
 
   if (!picked) return;
@@ -127,7 +128,6 @@ async function selectSkill(): Promise<{ payload: string; skill: Skill } | undefi
 }
 
 export function activate(context: vscode.ExtensionContext) {
-
   // Command: Load skill to clipboard
   const loadCmd = vscode.commands.registerCommand('ai-skills.load', async () => {
     const result = await selectSkill();
@@ -146,7 +146,7 @@ export function activate(context: vscode.ExtensionContext) {
     try {
       await vscode.commands.executeCommand('workbench.action.chat.open', {
         query: result.payload,
-        isPartialQuery: true  // ← This prevents auto-send!
+        isPartialQuery: true, // ← This prevents auto-send!
       });
       vscode.window.showInformationMessage(`⚡ ${result.skill.name} loaded — add context and send`);
     } catch {
@@ -154,7 +154,7 @@ export function activate(context: vscode.ExtensionContext) {
       await vscode.env.clipboard.writeText(result.payload);
       await vscode.commands.executeCommand('workbench.panel.chat.view.copilot.focus');
       vscode.window.showInformationMessage(
-        `⚡ ${result.skill.name} ready — Cmd+V to paste, add context, then send`
+        `⚡ ${result.skill.name} ready — Cmd+V to paste, add context, then send`,
       );
     }
   });

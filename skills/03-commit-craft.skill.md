@@ -1,6 +1,8 @@
 ---
 name: commit-craft
-description: Generate conventional commit messages with scope detection and emoji prefixes. Triggers on "commit message", "craft commit", "what should I commit". Produces standardized, copy-ready output.
+description:
+  Generate conventional commit messages with scope detection and emoji prefixes. Triggers on "commit
+  message", "craft commit", "what should I commit". Produces standardized, copy-ready output.
 ---
 
 # Commit Craft Skill
@@ -26,7 +28,7 @@ Always output in this exact, copy-ready block:
 ## Type → Emoji Map
 
 | Type     | Emoji | Use for                    |
-|----------|-------|----------------------------|
+| -------- | ----- | -------------------------- |
 | feat     | ✨    | New feature                |
 | fix      | 🐛    | Bug fix                    |
 | docs     | 📚    | Documentation              |
@@ -34,12 +36,13 @@ Always output in this exact, copy-ready block:
 | refactor | ♻️    | Code restructure           |
 | test     | 🧪    | Adding tests               |
 | chore    | 🔧    | Tooling, config            |
-| perf     | ⚡    | Performance                |
+| perf     | ⚡     | Performance                |
 | ci       | 🚀    | CI/CD changes              |
 
 ## Scope Detection
 
 Infer scope from files changed:
+
 - `src/components/*` → `ui`
 - `src/api/*` → `api`
 - `src/utils/*` → `utils`

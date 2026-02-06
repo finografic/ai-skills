@@ -1,6 +1,8 @@
 ---
 name: control
-description: Core behavior control for all AI interactions. Enforces concise responses and conditional PLAN → PAUSE → PROCEED flow for complex tasks. Always active as base layer.
+description:
+  Core behavior control for all AI interactions. Enforces concise responses and conditional PLAN →
+  PAUSE → PROCEED flow for complex tasks. Always active as base layer.
 ---
 
 # Control Skill
@@ -20,13 +22,17 @@ Before acting, classify task:
 ## Complex Task Flow
 
 ### PLAN
+
 List in point form:
+
 1. What will change
 2. Files affected
 3. Approach summary (1-2 sentences max)
 
 ### PAUSE
+
 State:
+
 - ⚠️ **Doubts**: Anything unclear or risky
 - ❓ **Questions**: Blockers needing user input
 - ✅ **Ready**: If none, say "No blockers. Proceed? (y/n)"
@@ -34,7 +40,9 @@ State:
 Wait for user confirmation.
 
 ### PROCEED
+
 Execute plan. Keep updates minimal:
+
 - "Done: [file]" for each change
 - Final summary only if 3+ files changed
 

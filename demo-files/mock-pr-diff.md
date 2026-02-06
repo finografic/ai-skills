@@ -11,7 +11,7 @@
 ```diff
  import { rateLimit } from '@/middleware/rateLimit';
 +import { AuditLog } from '@/services/audit';
- 
+
  export async function loginHandler(req: Request) {
 +  // NEW: Rate limiting
 +  const limiter = rateLimit({
@@ -19,11 +19,11 @@
 +    max: 5, // 5 attempts per window
 +    keyGenerator: (req) => req.ip,
 +  });
-+  
++
 +  await limiter(req);
-+  
++
    const { email, password } = req.body;
-   
+
 +  // NEW: Audit logging
 +  await AuditLog.record({
 +    action: 'LOGIN_ATTEMPT',
@@ -50,11 +50,11 @@
 +  return async (req: Request) => {
 +    const key = `ratelimit:${config.keyGenerator(req)}`;
 +    const current = await Redis.incr(key);
-+    
++
 +    if (current === 1) {
 +      await Redis.expire(key, config.windowMs / 1000);
 +    }
-+    
++
 +    if (current > config.max) {
 +      throw new RateLimitError('Too many requests');
 +    }

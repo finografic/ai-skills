@@ -25,10 +25,10 @@ VSCode extension to load AI skills into Copilot Chat.
 
 ## Configuration
 
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `ai-skills.skillsPath` | `~/ai-skills/skills` | Path to skills directory |
-| `ai-skills.alwaysIncludeControl` | `true` | Auto-prepend 00-control skill |
+| Setting                          | Default              | Description                   |
+| -------------------------------- | -------------------- | ----------------------------- |
+| `ai-skills.skillsPath`           | `~/ai-skills/skills` | Path to skills directory      |
+| `ai-skills.alwaysIncludeControl` | `true`               | Auto-prepend 00-control skill |
 
 ## Install (Dev)
 

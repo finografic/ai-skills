@@ -1,8 +1,7 @@
 # 🤖 AI Agent Skills — Demo
 
-> **TL;DR**: Skills give you _controlled, task-specific_ AI behavior.
-> Instructions give you _global coding preferences_.
-> This demo shows why you need both.
+> **TL;DR**: Skills give you _controlled, task-specific_ AI behavior. Instructions give you _global
+> coding preferences_. This demo shows why you need both.
 
 ---
 
@@ -169,17 +168,18 @@ PLAN:
 
 ## ❓ FAQ
 
-**Q: Why not just add more `.github/instructions`?**
-A: Instructions are "always on" behavior preferences. Skills are "when needed" task execution with control flow. Different tools for different problems.
+**Q: Why not just add more `.github/instructions`?** A: Instructions are "always on" behavior
+preferences. Skills are "when needed" task execution with control flow. Different tools for
+different problems.
 
-**Q: Can skills reference other skills?**
-A: The control skill (`00-control`) acts as a base layer. Other skills inherit its principles (concise, PAUSE when complex).
+**Q: Can skills reference other skills?** A: The control skill (`00-control`) acts as a base layer.
+Other skills inherit its principles (concise, PAUSE when complex).
 
-**Q: What about `.github/` restrictions?**
-A: Skills live outside `.github/`. No PRs, no red tape. Maintained in a central repo, delivered via extension.
+**Q: What about `.github/` restrictions?** A: Skills live outside `.github/`. No PRs, no red tape.
+Maintained in a central repo, delivered via extension.
 
-**Q: Will this work with Claude / Cursor / CLI?**
-A: Yes. Skills are plain markdown. The YAML header is for tooling; the content works anywhere you can paste context.
+**Q: Will this work with Claude / Cursor / CLI?** A: Yes. Skills are plain markdown. The YAML header
+is for tooling; the content works anywhere you can paste context.
 
 ---
 

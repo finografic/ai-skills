@@ -43,12 +43,12 @@ description: What it does. When to use it. Trigger words.
 
 ## Skills Index
 
-| # | Skill | Purpose |
-|---|-------|---------|
-| 00 | control | Base layer: concise output, PLAN→PAUSE→PROCEED |
-| 01 | file-anatomy | Visual file structure breakdown |
-| 02 | pr-diff-analysis | Risk-aware PR review |
-| 03 | commit-craft | Conventional commit generator |
+| #  | Skill            | Purpose                                        |
+| -- | ---------------- | ---------------------------------------------- |
+| 00 | control          | Base layer: concise output, PLAN→PAUSE→PROCEED |
+| 01 | file-anatomy     | Visual file structure breakdown                |
+| 02 | pr-diff-analysis | Risk-aware PR review                           |
+| 03 | commit-craft     | Conventional commit generator                  |
 
 ---
 

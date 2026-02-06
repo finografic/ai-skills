@@ -39,8 +39,7 @@ Cmd+Alt+A → Select skill → Chat opens with skill pre-filled → Add context 
 
 # File Anatomy Skill
 
-Display file contents in clearly marked sections.
-...
+Display file contents in clearly marked sections. ...
 
 ---
 
@@ -89,7 +88,7 @@ description: What this skill does and when to trigger it
 Instructions for the AI...
 ```
 
-## Installation
+# Installation
 
 ```bash
 cd ai-skills-loader

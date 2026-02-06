@@ -1,7 +1,7 @@
-import { useState, useCallback } from 'react';
-import { z } from 'zod';
 import { api } from '@/lib/api';
-import type { User, AuthToken } from '@/types/auth';
+import type { AuthToken, User } from '@/types/auth';
+import { useCallback, useState } from 'react';
+import { z } from 'zod';
 
 // Validation schema
 const loginSchema = z.object({
@@ -29,26 +29,23 @@ export function useAuth() {
   const [state, setState] = useState<AuthState>(initialState);
 
   const login = useCallback(async (credentials: LoginCredentials) => {
-    setState(prev => ({ ...prev, isLoading: true, error: null }));
-    
+    setState((prev) => ({ ...prev, isLoading: true, error: null }));
+
     try {
       const validated = loginSchema.parse(credentials);
-      const response = await api.post<{ user: User; token: AuthToken }>(
-        '/auth/login',
-        validated
-      );
-      
+      const response = await api.post<{ user: User; token: AuthToken }>('/auth/login', validated);
+
       setState({
         user: response.user,
         token: response.token,
         isLoading: false,
         error: null,
       });
-      
+
       return response;
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Login failed';
-      setState(prev => ({ ...prev, isLoading: false, error: message }));
+      setState((prev) => ({ ...prev, isLoading: false, error: message }));
       throw err;
     }
   }, []);

@@ -29,7 +29,7 @@ description: [REQUIRED] What this skill does. When to trigger it. Include specif
 
 ---
 
-<!-- 
+<!--
 TEMPLATE NOTES (delete when creating real skill):
 
 1. YAML Frontmatter:
@@ -46,7 +46,7 @@ TEMPLATE NOTES (delete when creating real skill):
 3. File Naming:
    - Format: NN-skill-name.skill.md
    - NN = load order (00 = always first, like control)
-   
+
 4. Testing:
    - Paste into AI chat and verify behavior
    - Check output format matches spec

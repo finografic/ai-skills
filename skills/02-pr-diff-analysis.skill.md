@@ -1,6 +1,8 @@
 ---
 name: pr-diff-analysis
-description: Analyze pull request diffs for risks, patterns, and review focus areas. Triggers on "analyze PR", "review diff", "PR review", "what changed". Uses PAUSE flow for larger PRs.
+description:
+  Analyze pull request diffs for risks, patterns, and review focus areas. Triggers on "analyze PR",
+  "review diff", "PR review", "what changed". Uses PAUSE flow for larger PRs.
 ---
 
 # PR Diff Analysis Skill
@@ -37,6 +39,7 @@ Analyze PR changes systematically.
 **Small PR** (< 5 files, < 100 lines): Output analysis directly
 
 **Large PR** (5+ files OR 100+ lines):
+
 1. Output CHANGE SUMMARY only
 2. PAUSE: "Large PR detected. Focus on specific area? Or full analysis?"
 3. PROCEED based on response
