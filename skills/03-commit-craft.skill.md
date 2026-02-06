@@ -28,7 +28,7 @@ Always output in this exact, copy-ready block:
 ## Type → Emoji Map
 
 | Type     | Emoji | Use for                    |
-| -------- | ----- | -------------------------- |
+|----------|-------|----------------------------|
 | feat     | ✨    | New feature                |
 | fix      | 🐛    | Bug fix                    |
 | docs     | 📚    | Documentation              |

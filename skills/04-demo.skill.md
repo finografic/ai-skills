@@ -1,24 +1,25 @@
 ---
 name: demo
 description: Full development workflow with planning, execution, testing, and documentation. Triggers on "implement ticket", "jira task", "start development". Orchestrates PLAN→PAUSE→PROCEED with TODO/FIXES documentation.
-argument-hint: JIRA ticket ID (e.g., PROJ-123)
 ---
 
 # Development Workflow Skill
 
 Complete workflow for implementing a Jira ticket with documentation, testing, and PR preparation.
 
-## Arguments
+## Auto-Detected Variables
 
-- `{TICKET}` — Jira ticket ID (e.g., PROJ-123)
-- `{REPO}` — Repository name (auto-detect from workspace if possible)
+| Variable   | Source                                    |
+|------------|-------------------------------------------|
+| `{TICKET}` | Current git branch name                   |
+| `{REPO}`   | `"name"` field in repository package.json |
 
 ## Document Outputs
 
-| Phase | Document | Purpose |
-|-------|----------|---------|
-| PLAN | `{TICKET}_{REPO}_00-TODO.md` | Planning, concerns, files affected |
-| FINALIZE | `{TICKET}_{REPO}_01-FIXES.md` | Completed work summary for PR |
+| Phase    | Document                         | Purpose                                |
+|----------|----------------------------------|----------------------------------------|
+| PLAN     | `{TICKET}_{REPO}_00-TODO.md`     | Planning, concerns, files affected     |
+| FINALIZE | `{TICKET}_{REPO}_01-FIXES.md`    | Completed work summary for PR          |
 
 ---
 
@@ -32,10 +33,11 @@ Constraints for this session:
 
 ## PLAN
 
-1. **Analyze** — Read requirements (Jira ticket, any linked docs/specs).
-2. **Plan** — Create simple, numbered implementation plan.
-3. **Concerns** — List any ambiguities, risks, or questions.
-4. **Document** — Write `{TICKET}_{REPO}_00-TODO.md`:
+1. **Auto-detect context** — Extract `{TICKET}` from git branch name, `{REPO}` from `package.json` `"name"` field.
+2. **Analyze** — Read requirements (Jira ticket, any linked docs/specs).
+3. **Plan** — Create simple, numbered implementation plan.
+4. **Concerns** — List any ambiguities, risks, or questions.
+5. **Document** — Write `{TICKET}_{REPO}_00-TODO.md`:
 
 ```markdown
 # {TICKET}: [Brief Title]
@@ -64,11 +66,11 @@ Constraints for this session:
 
 Present plan and concerns. Wait for user response:
 
-| User Says | Action |
-|-----------|--------|
-| Provides feedback/context | Update plan with new info, then PROCEED |
+| User Says                       | Action                                           |
+|---------------------------------|--------------------------------------------------|
+| Provides feedback/context       | Update plan with new info, then PROCEED         |
 | "proceed" / "go" / "looks good" | Acknowledge any open concerns briefly, then PROCEED |
-| Asks questions | Answer, then wait for confirmation |
+| Asks questions                  | Answer, then wait for confirmation               |
 
 > If open concerns remain unaddressed: "Proceeding. Open concerns (X, Y) — will flag if they become blockers."
 
@@ -76,11 +78,11 @@ Present plan and concerns. Wait for user response:
 
 ## PROCEED — Main Development
 
-5. **Execute** — Implement the plan step by step.
+1. **Execute** — Implement the plan step by step.
    - No pause needed between steps for simple tasks.
    - For complex multi-file changes, brief status updates.
 
-6. **Write Tests** — Create/update unit tests for changes.
+2. **Write Tests** — Create/update unit tests for changes.
    - DO NOT run tests yet.
 
 ### ⏸️ PAUSE
@@ -91,15 +93,55 @@ Report: "Implementation complete. Tests written but not yet run. Ready to execut
 
 ## TESTS
 
-7. **Run Tests** — Execute tests for affected files only.
-   - Use test script from project `package.json`
-   - Avoid watch mode unless beneficial
-   - Include tests for child components if relevant
+> 📎 **Reference:** Follow `/run-tests` skill for detailed test execution protocol.
 
-8. **Iterate** — Fix failing tests.
-   - ⚠️ Test iteration may take time
-   - If stuck or uncertain, PAUSE and report concerns
-   - Allow multiple fix→run cycles
+### Pre-flight (REQUIRED)
+
+```bash
+# 1. Confirm at project root
+pwd
+ls package.json  # Must exist
+
+# 2. Identify test command
+cat package.json | grep -A2 '"test"'
+```
+
+### 7. Run Tests — SCOPED ONLY
+
+```bash
+# ✅ CORRECT — scoped to changed files
+npm test -- --testPathPattern="ChangedComponent" --watchAll=false
+
+# ❌ WRONG — never run full suite
+npm test
+```
+
+**Rules:**
+- Run from **project root** (verify with `pwd`)
+- Scope to **altered files only** (use `--testPathPattern`)
+- **No watch mode** (add `--watchAll=false`)
+- Include child component tests if affected
+
+### 8. Iterate on Failures
+
+Fix → Re-run → Repeat until pass.
+
+**⏸️ PAUSE and report if:**
+- 3+ failed iterations on same test
+- Test requires business logic clarification
+- Unexpected env/config errors
+- Fixing would change test intent
+
+**Pause report format:**
+
+```
+⏸️ TEST ITERATION PAUSED
+Attempts: 3
+File: ComponentName.test.tsx
+Issue: [what's failing]
+Tried: [fixes attempted]
+Question: [specific question for user]
+```
 
 ### ⏸️ PAUSE (if needed)
 
@@ -109,13 +151,13 @@ Report any test issues requiring user input or decision.
 
 ## SNAPSHOTS
 
-9. **Update Snapshots** — Run snapshot updates for altered test files.
+1. **Update Snapshots** — Run snapshot updates for altered test files.
 
 ---
 
 ## DEVELOPMENT DONE
 
-10. **Commit Message** — Suggest conventional commit:
+1. **Commit Message** — Suggest conventional commit:
 
 ```
 feat(component): implement [brief description]
@@ -179,11 +221,12 @@ Write `{TICKET}_{REPO}_01-FIXES.md`:
 - `src/utils/...` — [brief note]
 
 ## Concerns
-| Concern | Status | Resolution |
-|---------|--------|------------|
-| [Concern 1] | ✅ Solved | [How/where] |
-| [Concern 2] | ⚠️ Open | [Notes] |
-| [Concern 3] | ❌ Not possible | [Why] |
+
+| Concern      | Status          | Resolution  |
+|--------------|-----------------|-------------|
+| [Concern 1]  | ✅ Solved       | [How/where] |
+| [Concern 2]  | ⚠️ Open         | [Notes]     |
+| [Concern 3]  | ❌ Not possible | [Why]       |
 
 ## Tests
 - Added: `ComponentName.test.tsx`
@@ -192,7 +235,9 @@ Write `{TICKET}_{REPO}_01-FIXES.md`:
 
 ## Commit
 ```
+
 [suggested commit message]
+
 ```
 ```
 

@@ -1,6 +1,6 @@
 # AI Skills
 
-> Cross-platform AI skills system for Claude Code CLI, Cursor IDE, and GitHub Copilot.
+> Cross-platform AI skills system for GitHub Copilot, Claude Code CLI, and Cursor IDE.
 
 ---
 
