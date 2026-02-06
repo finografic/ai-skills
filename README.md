@@ -25,14 +25,14 @@ code --install-extension ai-skills-loader-0.2.0.vsix
 
 ## Skills vs Instructions
 
-| Aspect | **Skills** | **Instructions** |
-|--------|-----------|------------------|
-| **Purpose** | Task-specific workflows with defined outputs | Global coding preferences |
-| **Activation** | Explicit — user invokes `/skill-name` | Implicit — always active |
-| **Scope** | Single task | All conversations |
-| **Output** | Structured, visually distinct | Natural, contextual |
-| **Examples** | `/file-anatomy`, `/demo`, `/commit-craft` | "Use TypeScript", "Prefer functional" |
-| **Location** | `~/ai-skills/skills/*.skill.md` | `.github/copilot-instructions.md` |
+| Aspect          | **Skills**                                   | **Instructions**                   |
+|-----------------|----------------------------------------------|------------------------------------|
+| **Purpose**     | Task-specific workflows with defined outputs | Global coding preferences          |
+| **Activation**  | Explicit — user invokes `/skill-name`        | Implicit — always active           |
+| **Scope**       | Single task                                  | All conversations                  |
+| **Output**      | Structured, visually distinct                | Natural, contextual                |
+| **Examples**    | `/file-anatomy`, `/demo`, `/commit-craft`    | "Use TypeScript", "Prefer functional" |
+| **Location**    | `~/ai-skills/skills/*.skill.md`              | `.github/copilot-instructions.md`  |
 
 ### When to Use Each
 
@@ -107,13 +107,13 @@ Expected structure...
 
 ## Available Skills
 
-| Skill | Command | Purpose |
-|-------|---------|---------|
-| Control | (auto) | Base behavior, PLAN→PAUSE→PROCEED |
-| File Anatomy | `/file-anatomy` | Visual file structure breakdown |
-| PR Diff Analysis | `/pr-diff-analysis` | Structured PR review |
-| Commit Craft | `/commit-craft` | Conventional commit guidance |
-| Demo | `/demo` | Full dev workflow with docs |
+| Skill            | Command             | Purpose                           |
+|------------------|---------------------|-----------------------------------|
+| Control          | (auto)              | Base behavior, PLAN→PAUSE→PROCEED |
+| File Anatomy     | `/file-anatomy`     | Visual file structure breakdown   |
+| PR Diff Analysis | `/pr-diff-analysis` | Structured PR review              |
+| Commit Craft     | `/commit-craft`     | Conventional commit guidance      |
+| Demo             | `/demo`             | Full dev workflow with docs       |
 
 ---
 
@@ -127,8 +127,8 @@ Expected structure...
 
 ## Platform Support
 
-| Platform | Status | Method |
-|----------|--------|--------|
-| GitHub Copilot | ✅ Ready | Extension + native sync |
-| Claude Code CLI | 🟡 Manual | Copy to project |
-| Cursor IDE | 🟡 Manual | Copy to rules |
+| Platform         | Status    | Method                  |
+|------------------|-----------|-------------------------|
+| GitHub Copilot   | ✅ Ready  | Extension + native sync |
+| Claude Code CLI  | 🟡 Manual | Copy to project         |
+| Cursor IDE       | 🟡 Manual | Copy to rules           |

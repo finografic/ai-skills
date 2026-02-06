@@ -8,14 +8,14 @@
 
 ### ✅ Completed
 
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Skills format (YAML frontmatter + markdown) | ✅ Done | Portable across all AI tools |
-| Control skill (PLAN→PAUSE→PROCEED) | ✅ Done | Conditional complexity handling |
-| Demo agenta skills (file-anatomy, pr-diff, commit-craft) | ✅ Done | Clear visual output differentiation |
-| VSCode extension — Compose mode | ✅ Done | `Cmd+Alt+A` pre-fills Copilot chat |
-| VSCode extension — Native sync | ✅ Done | Symlinks to Copilot prompts dir |
-| `isPartialQuery: true` discovery | ✅ Done | Pre-fill without auto-send |
+| Feature                                                  | Status  | Notes                                 |
+|----------------------------------------------------------|---------|---------------------------------------|
+| Skills format (YAML frontmatter + markdown)              | ✅ Done | Portable across all AI tools          |
+| Control skill (PLAN→PAUSE→PROCEED)                      | ✅ Done | Conditional complexity handling       |
+| Demo agenta skills (file-anatomy, pr-diff, commit-craft) | ✅ Done | Clear visual output differentiation   |
+| VSCode extension — Compose mode                          | ✅ Done | `Cmd+Alt+A` pre-fills Copilot chat    |
+| VSCode extension — Native sync                           | ✅ Done | Symlinks to Copilot prompts dir       |
+| `isPartialQuery: true` discovery                         | ✅ Done | Pre-fill without auto-send            |
 
 ### 📁 Project Structure
 
@@ -56,20 +56,20 @@ User types: /file-anatomy useAuth.ts
 
 **Prompt files location:**
 
-| OS | Path |
-|----|------|
-| macOS | `~/Library/Application Support/Code/User/prompts/` |
-| Windows | `%APPDATA%\Code\User\prompts` |
-| Linux | `~/.config/Code/User/prompts` |
+| OS      | Path                                                |
+|---------|-----------------------------------------------------|
+| macOS   | `~/Library/Application Support/Code/User/prompts/` |
+| Windows | `%APPDATA%\Code\User\prompts`                       |
+| Linux   | `~/.config/Code/User/prompts`                       |
 
 ### `/command` vs `@participant`
 
-| Aspect | `/command` | `@participant` |
-|--------|-----------|----------------|
-| What it is | Prompt injected into context | Agent that handles message |
-| Who responds | Current participant (Copilot) | Routes to different handler |
-| Can we create? | ✅ Yes — `.prompt.md` files | ❌ Requires proposed APIs |
-| Our approach | **Native sync** | Future (when APIs stabilize) |
+| Aspect         | `/command`                     | `@participant`                  |
+|----------------|--------------------------------|---------------------------------|
+| What it is     | Prompt injected into context   | Agent that handles message      |
+| Who responds   | Current participant (Copilot)  | Routes to different handler     |
+| Can we create? | ✅ Yes — `.prompt.md` files    | ❌ Requires proposed APIs       |
+| Our approach   | **Native sync**                | Future (when APIs stabilize)    |
 
 ---
 
@@ -77,20 +77,20 @@ User types: /file-anatomy useAuth.ts
 
 ### 🎯 Priority 1: Demo Polish
 
-| Task | Purpose | Status |
-|------|---------|--------|
-| Test `isPartialQuery` behavior | Confirm pre-fill works consistently | ⏳ Testing |
-| Refine skill output formats | Ensure visual differentiation | ⏳ Iterate |
-| Create demo script/flow | Stakeholder presentation | 📋 Planned |
-| Document Skills vs Instructions | Clear comparison for org | 📋 Planned |
+| Task                            | Purpose                             | Status      |
+|---------------------------------|-------------------------------------|-------------|
+| Test `isPartialQuery` behavior  | Confirm pre-fill works consistently | ⏳ Testing  |
+| Refine skill output formats     | Ensure visual differentiation       | ⏳ Iterate  |
+| Create demo script/flow         | Stakeholder presentation            | 📋 Planned |
+| Document Skills vs Instructions | Clear comparison for org            | 📋 Planned |
 
 ### 🎯 Priority 2: Native Integration
 
-| Task | Purpose | Status |
-|------|---------|--------|
-| Test `/skill-name` after sync | Verify native slash-commands work | ⏳ Testing |
-| Add `argument-hint` to skills | Better UX in Copilot | 📋 Planned |
-| Auto-sync on skill file change | File watcher in extension | 📋 Planned |
+| Task                           | Purpose                           | Status      |
+|--------------------------------|-----------------------------------|-------------|
+| Test `/skill-name` after sync  | Verify native slash-commands work | ⏳ Testing  |
+| Add `argument-hint` to skills  | Better UX in Copilot              | 📋 Planned |
+| Auto-sync on skill file change | File watcher in extension         | 📋 Planned |
 
 ---
 
@@ -98,30 +98,30 @@ User types: /file-anatomy useAuth.ts
 
 ### 🔧 Extension Enhancements
 
-| Feature | Description | Complexity |
-|---------|-------------|------------|
-| Skill browser sidebar | TreeView showing all skills | Medium |
-| Skill preview | Webview panel with formatted preview | Medium |
-| Quick-create skill | Template scaffolding command | Low |
-| Sync status indicator | Status bar showing sync state | Low |
+| Feature               | Description                          | Complexity |
+|-----------------------|--------------------------------------|------------|
+| Skill browser sidebar | TreeView showing all skills          | Medium     |
+| Skill preview         | Webview panel with formatted preview | Medium     |
+| Quick-create skill    | Template scaffolding command         | Low        |
+| Sync status indicator | Status bar showing sync state        | Low        |
 
 ### 📦 Skills Library Expansion
 
-| Skill | Purpose | Priority |
-|-------|---------|----------|
-| `code-review` | PR review with checklist | High |
-| `refactor-plan` | Safe refactoring steps | High |
-| `test-cases` | Generate test scenarios | Medium |
-| `doc-gen` | Documentation generation | Medium |
-| `debug-assist` | Systematic debugging flow | Medium |
+| Skill           | Purpose                   | Priority |
+|-----------------|---------------------------|----------|
+| `code-review`   | PR review with checklist  | High     |
+| `refactor-plan` | Safe refactoring steps    | High     |
+| `test-cases`    | Generate test scenarios   | Medium   |
+| `doc-gen`       | Documentation generation  | Medium   |
+| `debug-assist`  | Systematic debugging flow | Medium   |
 
 ### 🔗 Cross-Platform Parity
 
-| Platform | Current | Target |
-|----------|---------|--------|
-| GitHub Copilot | ✅ Extension + native sync | Seamless |
-| Claude Code CLI | 🟡 Manual copy | Auto-detect & load |
-| Cursor IDE | 🟡 Manual copy | Rules integration |
+| Platform         | Current                    | Target             |
+|------------------|----------------------------|--------------------|
+| GitHub Copilot   | ✅ Extension + native sync | Seamless           |
+| Claude Code CLI  | 🟡 Manual copy             | Auto-detect & load |
+| Cursor IDE       | 🟡 Manual copy             | Rules integration  |
 
 ---
 
@@ -129,24 +129,24 @@ User types: /file-anatomy useAuth.ts
 
 ### 🚀 Advanced Features
 
-| Feature | Description | Dependencies |
-|---------|-------------|--------------|
-| `@skills` participant | Native chat participant | `chatAgents` API (proposed) |
-| Skill chaining | `file-anatomy` → `commit-craft` | `handoffs` support |
-| Tool integration | Skills that use Copilot tools | `languageModelToolsForAgent` |
-| MCP integration | Skills as MCP resources | `mcpConfigurationProvider` |
+| Feature               | Description                         | Dependencies                 |
+|-----------------------|-------------------------------------|------------------------------|
+| `@skills` participant | Native chat participant             | `chatAgents` API (proposed)  |
+| Skill chaining        | `file-anatomy` → `commit-craft`     | `handoffs` support           |
+| Tool integration      | Skills that use Copilot tools       | `languageModelToolsForAgent` |
+| MCP integration       | Skills as MCP resources             | `mcpConfigurationProvider`   |
 
 ### 📡 API Watch List
 
 Monitor these VSCode proposed APIs for graduation to stable:
 
-| API | What It Enables | Status |
-|-----|-----------------|--------|
-| `chatPromptFiles` | Native prompt file registration | Internal (Microsoft only) |
-| `chatAgents` | Register custom `@participant` | Proposed |
-| `defaultChatParticipant` | Become default chat handler | Proposed |
-| `languageModelToolsForAgent` | Provide tools to LLM agents | Proposed |
-| `mcpConfigurationProvider` | MCP server configuration | Proposed |
+| API                           | What It Enables                 | Status                    |
+|-------------------------------|---------------------------------|---------------------------|
+| `chatPromptFiles`             | Native prompt file registration | Internal (Microsoft only) |
+| `chatAgents`                  | Register custom `@participant`  | Proposed                  |
+| `defaultChatParticipant`      | Become default chat handler     | Proposed                  |
+| `languageModelToolsForAgent`  | Provide tools to LLM agents     | Proposed                  |
+| `mcpConfigurationProvider`    | MCP server configuration        | Proposed                  |
 
 **Where to monitor:**
 - [VSCode Release Notes](https://code.visualstudio.com/updates)
@@ -211,20 +211,20 @@ Monitor these VSCode proposed APIs for graduation to stable:
 
 ### From Copilot Extension Analysis
 
-| Discovery | File/Location | Implication |
-|-----------|---------------|-------------|
-| `isPartialQuery: true` | `extension.js` | Pre-fill chat without auto-send |
-| `.agent.md` format | `assets/agents/Plan.agent.md` | YAML frontmatter + tools + handoffs |
-| `.prompt.md` format | `assets/prompts/savePrompt.prompt.md` | Native prompt registration |
-| `argument-hint` field | YAML frontmatter | Placeholder text for arguments |
+| Discovery              | File/Location                            | Implication                      |
+|------------------------|------------------------------------------|----------------------------------|
+| `isPartialQuery: true` | `extension.js`                           | Pre-fill chat without auto-send  |
+| `.agent.md` format     | `assets/agents/Plan.agent.md`            | YAML frontmatter + tools + handoffs |
+| `.prompt.md` format    | `assets/prompts/savePrompt.prompt.md`    | Native prompt registration       |
+| `argument-hint` field  | YAML frontmatter                         | Placeholder text for arguments   |
 
 ### From Promptitude Extension Analysis
 
-| Discovery | Implication |
-|-----------|-------------|
-| Syncs to `User/prompts/` | Native Copilot integration path |
-| Symlink approach | Clean separation of source & deployed |
-| YAML frontmatter parsing | Same format as our skills |
+| Discovery                | Implication                         |
+|--------------------------|-------------------------------------|
+| Syncs to `User/prompts/` | Native Copilot integration path     |
+| Symlink approach         | Clean separation of source & deployed |
+| YAML frontmatter parsing | Same format as our skills           |
 
 ---
 

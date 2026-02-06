@@ -55,11 +55,11 @@ Press `Cmd+Alt+A` → Select **file-anatomy**
 
 **Explain the difference:**
 
-| | Skills | Instructions |
-|-|--------|--------------|
-| **When** | Explicit invocation | Always active |
-| **Output** | Structured, visual | Natural |
-| **Use for** | Specific tasks | Global preferences |
+|             | Skills              | Instructions       |
+|-------------|---------------------|--------------------|
+| **When**    | Explicit invocation | Always active      |
+| **Output**  | Structured, visual  | Natural            |
+| **Use for** | Specific tasks      | Global preferences |
 
 **Example:**
 - **Instruction:** "Use TypeScript" → Always applied
@@ -129,11 +129,11 @@ Same format, portable everywhere.
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| Skill not appearing | Check `~/ai-skills/skills/` exists |
-| `isPartialQuery` not working | Update VSCode to latest |
-| Native sync not working | Check Copilot prompts directory permissions |
+| Issue                        | Solution                                        |
+|------------------------------|-------------------------------------------------|
+| Skill not appearing          | Check `~/ai-skills/skills/` exists              |
+| `isPartialQuery` not working | Update VSCode to latest                         |
+| Native sync not working      | Check Copilot prompts directory permissions     |
 
 ---
 

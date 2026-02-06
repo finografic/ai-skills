@@ -7,7 +7,7 @@ VSCode extension to load AI agent skills into GitHub Copilot Chat with native sy
 ### 🎯 Skill Loading (Compose Mode)
 
 | Keybinding  | Command                 | Description                                  |
-| ----------- | ----------------------- | -------------------------------------------- |
+|-------------|-------------------------|----------------------------------------------|
 | `Cmd+Alt+S` | Load Skill to Clipboard | Copy skill to clipboard                      |
 | `Cmd+Alt+A` | Load & Open Copilot     | Pre-fill skill in chat, ready to add context |
 
@@ -15,12 +15,12 @@ VSCode extension to load AI agent skills into GitHub Copilot Chat with native sy
 
 Sync skills to Copilot's prompts directory for native `/slash-command` access:
 
-| Command                                  | Description                           |
-| ---------------------------------------- | ------------------------------------- |
+| Command                                         | Description                           |
+|-------------------------------------------------|---------------------------------------|
 | `AI Agent Skills: Sync to Copilot (Native)`    | Symlink skills to Copilot prompts dir |
-| `AI Agent Skills: Remove from Copilot`         | Remove synced skills                  |
-| `AI Agent Skills: Show Sync Status`            | Check which skills are synced         |
-| `AI Agent Skills: Open Copilot Prompts Folder` | Open the native prompts directory     |
+| `AI Agent Skills: Remove from Copilot`          | Remove synced skills                  |
+| `AI Agent Skills: Show Sync Status`             | Check which skills are synced         |
+| `AI Agent Skills: Open Copilot Prompts Folder`  | Open the native prompts directory     |
 
 ## Two Modes of Operation
 
@@ -59,10 +59,10 @@ After sync, type `/file-anatomy` directly in Copilot Chat!
 ## Copilot Prompts Directory
 
 | OS          | Path                                               |
-| ----------- | -------------------------------------------------- |
+|-------------|-----------------------------------------------------|
 | **macOS**   | `~/Library/Application Support/Code/User/prompts/` |
-| **Windows** | `%APPDATA%\Code\User\prompts`                      |
-| **Linux**   | `~/.config/Code/User/prompts`                      |
+| **Windows** | `%APPDATA%\Code\User\prompts`                       |
+| **Linux**   | `~/.config/Code/User/prompts`                       |
 
 ## Configuration
 
