@@ -1,6 +1,6 @@
-# AI Skills Loader
+# AI Agent Skills Loader
 
-VSCode extension to load AI skills into GitHub Copilot Chat with native sync support.
+VSCode extension to load AI agent skills into GitHub Copilot Chat with native sync support.
 
 ## Features
 
@@ -17,10 +17,10 @@ Sync skills to Copilot's prompts directory for native `/slash-command` access:
 
 | Command                                  | Description                           |
 | ---------------------------------------- | ------------------------------------- |
-| `AI Skills: Sync to Copilot (Native)`    | Symlink skills to Copilot prompts dir |
-| `AI Skills: Remove from Copilot`         | Remove synced skills                  |
-| `AI Skills: Show Sync Status`            | Check which skills are synced         |
-| `AI Skills: Open Copilot Prompts Folder` | Open the native prompts directory     |
+| `AI Agent Skills: Sync to Copilot (Native)`    | Symlink skills to Copilot prompts dir |
+| `AI Agent Skills: Remove from Copilot`         | Remove synced skills                  |
+| `AI Agent Skills: Show Sync Status`            | Check which skills are synced         |
+| `AI Agent Skills: Open Copilot Prompts Folder` | Open the native prompts directory     |
 
 ## Two Modes of Operation
 

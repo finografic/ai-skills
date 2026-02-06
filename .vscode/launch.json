@@ -5,17 +5,17 @@
       "name": "Run Extension",
       "type": "extensionHost",
       "request": "launch",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}/ai-skills-loader"],
-      "outFiles": ["${workspaceFolder}/ai-skills-loader/out/**/*.js"],
-      "preLaunchTask": "compile:ai-skills-loader"
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/ai-agent-skills-loader"],
+      "outFiles": ["${workspaceFolder}/ai-agent-skills-loader/out/**/*.js"],
+      "preLaunchTask": "compile:ai-agent-skills-loader"
     },
     {
       "name": "Run Extension (Watch)",
       "type": "extensionHost",
       "request": "launch",
-      "args": ["--extensionDevelopmentPath=${workspaceFolder}/ai-skills-loader"],
-      "outFiles": ["${workspaceFolder}/ai-skills-loader/out/**/*.js"],
-      "preLaunchTask": "watch:ai-skills-loader"
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/ai-agent-skills-loader"],
+      "outFiles": ["${workspaceFolder}/ai-agent-skills-loader/out/**/*.js"],
+      "preLaunchTask": "watch:ai-agent-skills-loader"
     }
   ]
 }

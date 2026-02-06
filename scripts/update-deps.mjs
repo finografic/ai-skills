@@ -42,7 +42,7 @@ function getWorkspacePatterns(rootPkg) {
 
 function expandWorkspacePattern(pattern) {
   // Minimal glob support:
-  // - exact path: "ai-skills-loader"
+  // - exact path: "ai-agent-skills-loader"
   // - single-star folder globs: "packages/*" or "extensions/*"
   // Other patterns can be added later if needed.
 

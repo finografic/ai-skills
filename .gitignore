@@ -103,3 +103,5 @@ debug.log
 # Extracted archive (source files)
 files/
 
+# Cursor
+.cursor

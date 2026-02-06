@@ -1,15 +1,15 @@
 {
   "name": "ai-skills-loader",
   "private": true,
-  "displayName": "AI Skills Loader",
-  "description": "Load AI skills into Copilot Chat with native sync support",
+  "displayName": "AI Agent Skills Loader",
+  "description": "Load AI agent skills into Copilot Chat with native sync support",
   "version": "0.2.0",
   "publisher": "internal",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/finografic/ai-skills.git",
-    "directory": "ai-skills-loader"
+    "url": "https://github.com/finografic/ai-agent-skills.git",
+    "directory": "ai-agent-skills-loader"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -20,6 +20,7 @@
   "icon": "icon.png",
   "files": [
     "out/**",
+    "images/**",
     "package.json",
     "LICENSE",
     "icon.png",
@@ -32,27 +33,27 @@
     "commands": [
       {
         "command": "ai-skills.load",
-        "title": "AI Skills: Load Skill to Clipboard"
+        "title": "AI Agent Skills: Load Skill to Clipboard"
       },
       {
         "command": "ai-skills.loadToCopilot",
-        "title": "AI Skills: Load & Open Copilot"
+        "title": "AI Agent Skills: Load & Open Copilot"
       },
       {
         "command": "ai-skills.syncToCopilot",
-        "title": "AI Skills: Sync to Copilot (Native)"
+        "title": "AI Agent Skills: Sync to Copilot (Native)"
       },
       {
         "command": "ai-skills.unsyncFromCopilot",
-        "title": "AI Skills: Remove from Copilot"
+        "title": "AI Agent Skills: Remove from Copilot"
       },
       {
         "command": "ai-skills.syncStatus",
-        "title": "AI Skills: Show Sync Status"
+        "title": "AI Agent Skills: Show Sync Status"
       },
       {
         "command": "ai-skills.openCopilotFolder",
-        "title": "AI Skills: Open Copilot Prompts Folder"
+        "title": "AI Agent Skills: Open Copilot Prompts Folder"
       }
     ],
     "keybindings": [
@@ -68,11 +69,11 @@
       }
     ],
     "configuration": {
-      "title": "AI Skills Loader",
+      "title": "AI Agent Skills Loader",
       "properties": {
         "ai-skills.skillsPath": {
           "type": "string",
-          "default": "~/ai-skills/skills",
+          "default": "~/ai-agent-skills/skills",
           "description": "Path to skills directory"
         },
         "ai-skills.alwaysIncludeControl": {
@@ -81,6 +82,15 @@
           "description": "Always include control directives with skills"
         }
       }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-agent-skills",
+          "title": "AI Agent Skills",
+          "icon": "images/ai-agent-skills.svg"
+        }
+      ]
     }
   },
   "scripts": {

@@ -10,7 +10,7 @@ Portable, task-specific AI behavior controls.
 
 ```bash
 # Clone
-git clone [repo-url] ~/ai-skills
+git clone [repo-url] ~/ai-agent-skills
 
 # Skills live in /skills
 ls skills/
@@ -64,13 +64,13 @@ description: What it does. When to use it. Trigger words.
 ## Architecture
 
 ```
-~/ai-skills/           ← This repo (central, portable)
+~/ai-agent-skills/           ← This repo (central, portable)
 ├── skills/            ← Skill definitions
 ├── README.md          ← You are here
 └── DEMO.README.md     ← Stakeholder demo
 
 VSCode Extension       ← Delivery mechanism (separate repo)
-└── Reads ~/ai-skills/
+└── Reads ~/ai-agent-skills/
 └── Injects into Copilot Chat
 ```
 

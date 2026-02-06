@@ -2,19 +2,19 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "compile:ai-skills-loader",
+      "label": "compile:ai-agent-skills-loader",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "compile", "--workspace=ai-skills-loader"],
+      "args": ["run", "compile", "--workspace=ai-agent-skills-loader"],
       "group": "build",
       "presentation": { "reveal": "silent" },
       "problemMatcher": "$tsc"
     },
     {
-      "label": "watch:ai-skills-loader",
+      "label": "watch:ai-agent-skills-loader",
       "type": "shell",
       "command": "npm",
-      "args": ["run", "watch", "--workspace=ai-skills-loader"],
+      "args": ["run", "watch", "--workspace=ai-agent-skills-loader"],
       "group": "build",
       "isBackground": true,
       "presentation": { "reveal": "silent" },

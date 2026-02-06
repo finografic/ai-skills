@@ -1,6 +1,6 @@
-# AI Skills Loader
+# AI Agent Skills Loader
 
-VSCode extension to load AI skills into Copilot Chat.
+VSCode extension to load AI agent skills into Copilot Chat.
 
 ## Usage
 

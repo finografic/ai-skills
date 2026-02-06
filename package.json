@@ -1,9 +1,9 @@
 {
-  "name": "@finografic/ai-skills",
+  "name": "@finografic/ai-agent-skills",
   "version": "0.2.0",
   "private": true,
   "description": "Portable, task-specific AI behavior controls",
-  "homepage": "https://github.com/finografic/ai-skills",
+  "homepage": "https://github.com/finografic/ai-agent-skills",
   "author": {
     "name": "Justin",
     "email": "justin.blair.rankin@gmail.com",
@@ -12,26 +12,26 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/finografic/ai-skills.git"
+    "url": "https://github.com/finografic/ai-agent-skills.git"
   },
   "bugs": {
-    "url": "https://github.com/finografic/ai-skills/issues"
+    "url": "https://github.com/finografic/ai-agent-skills/issues"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "workspaces": [
-    "ai-skills-loader"
+    "ai-agent-skills-loader"
   ],
   "scripts": {
     "compile": "npm run compile --workspaces",
     "watch": "npm run watch --workspaces",
-    "package": "npm run package --workspace=ai-skills-loader",
+    "package": "npm run package --workspace=ai-agent-skills-loader",
     "format": "dprint fmt --diff",
     "format:check": "dprint check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deps.update": "node scripts/update-deps.mjs",
+    "deps:update": "node scripts/update-deps.mjs",
     "prepare": "simple-git-hooks"
   },
   "engines": {

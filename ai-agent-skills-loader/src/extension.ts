@@ -64,7 +64,7 @@ function parseSkillFile(filepath: string): Skill | null {
 
 function loadSkills(): Skill[] {
   const config = vscode.workspace.getConfiguration('ai-skills');
-  const skillsPath = expandPath(config.get<string>('skillsPath') || '~/ai-skills/skills');
+  const skillsPath = expandPath(config.get<string>('skillsPath') || '~/ai-agent-skills/skills');
 
   if (!fs.existsSync(skillsPath)) {
     vscode.window.showErrorMessage(`Skills directory not found: ${skillsPath}`);

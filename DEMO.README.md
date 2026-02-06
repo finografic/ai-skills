@@ -108,7 +108,7 @@ PLAN:
 
 |                 | **Agent Skills**                      | **Copilot Instructions**             |
 | --------------- | ------------------------------------- | ------------------------------------ |
-| **Location**    | `~/ai-skills/` (portable)             | `.github/instructions/` (repo-bound) |
+| **Location**    | `~/ai-agent-skills/` (portable)             | `.github/instructions/` (repo-bound) |
 | **Scope**       | Task-specific, loaded on demand       | Always on (or glob-filtered)         |
 | **Content**     | Structure, examples, validation, flow | Preferences and rules only           |
 | **Control**     | PLAN → PAUSE → PROCEED                | None                                 |
@@ -150,7 +150,7 @@ PLAN:
 
 ```
 ┌──────────────────┐     ┌─────────────────────┐     ┌──────────────────┐
-│  ~/ai-skills/    │────▶│  VSCode Extension   │────▶│  Copilot Chat    │
+│  ~/ai-agent-skills/    │────▶│  VSCode Extension   │────▶│  Copilot Chat    │
 │  (source repo)   │     │  (delivery device)  │     │  (receives skill │
 │                  │     │                     │     │   as context)    │
 └──────────────────┘     └─────────────────────┘     └──────────────────┘
