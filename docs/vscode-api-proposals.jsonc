@@ -1,0 +1,233 @@
+// VSCode Enabled API Proposals Reference
+// These are experimental APIs that can be enabled in extensions
+// Note: Extensions using these cannot be published to Marketplace
+
+{
+  // ═══════════════════════════════════════════════════════════════
+  // 🤖 CHAT & AI RELATED (Most relevant for skills project)
+  // ═══════════════════════════════════════════════════════════════
+  "chat": [
+    "chatEditing",                      // Chat editing sessions
+    "chatParticipantAdditions",         // Add features to chat participants
+    "chatParticipantPrivate",           // Private chat participant APIs
+    "chatProvider",                     // Provide chat functionality
+    "chatReferenceBinaryData",          // Binary data in chat references
+    "chatReferenceDiagnostic",          // Diagnostic references in chat
+    "chatStatusItem",                   // Status items in chat
+    "chatTab",                          // Chat as editor tab
+    "contribChatParticipantDetection",  // Detect chat participants
+    "defaultChatParticipant"            // Default chat participant registration
+  ],
+
+  "ai": [
+    "aiRelatedInformation",             // AI-related info provider
+    "aiTextSearchProvider",             // AI-powered text search
+    "codeActionAI",                     // AI code actions
+    "inlineCompletionsAdditions",       // Additional inline completion features
+    "inlineEdit",                       // Inline editing
+    "languageModelCapabilities",        // LM capability detection
+    "languageModelDataPart",            // Data parts in LM
+    "languageModelSystem",              // System messages for LM
+    "languageModelToolsForAgent",       // Tools for LM agents ⭐
+    "mappedEditsProvider"               // Mapped edits provider
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🔍 SEARCH & FILES
+  // ═══════════════════════════════════════════════════════════════
+  "search": [
+    "fileSearchProvider",
+    "fileSearchProvider2",
+    "findFiles2",
+    "findTextInFiles",
+    "findTextInFiles2",
+    "textSearchComplete2",
+    "textSearchProvider",
+    "textSearchProvider2"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 💬 COMMENTS
+  // ═══════════════════════════════════════════════════════════════
+  "comments": [
+    "activeComment",
+    "commentReactor",
+    "commentReveal",
+    "commentThreadApplicability",
+    "commentingRangeHint",
+    "commentsDraftState",
+    "contribCommentEditorActionsMenu",
+    "contribCommentPeekContext",
+    "contribCommentThreadAdditionalMenu",
+    "contribCommentsViewThreadMenus"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🔧 SOURCE CONTROL
+  // ═══════════════════════════════════════════════════════════════
+  "scm": [
+    "contribSourceControlHistoryItemMenu",
+    "contribSourceControlHistoryTitleMenu",
+    "contribSourceControlInputBoxMenu",
+    "contribSourceControlTitleMenu",
+    "scmActionButton",
+    "scmHistoryProvider",
+    "scmMultiDiffEditor",
+    "scmRemotes",
+    "scmSelectedProvider",
+    "scmTextDocument",
+    "scmValidation"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🖥️ TERMINAL
+  // ═══════════════════════════════════════════════════════════════
+  "terminal": [
+    "terminalCompletionProvider",
+    "terminalDataWriteEvent",
+    "terminalDimensions",
+    "terminalExecuteCommandEvent",
+    "terminalQuickFixProvider",
+    "terminalSelection",
+    "terminalShellEnv"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 📓 NOTEBOOKS
+  // ═══════════════════════════════════════════════════════════════
+  "notebooks": [
+    "contribNotebookStaticPreloads",
+    "notebookCellExecution",
+    "notebookCellExecutionState",
+    "notebookControllerAffinityHidden",
+    "notebookDeprecated",
+    "notebookExecution",
+    "notebookKernelSource",
+    "notebookLiveShare",
+    "notebookMessaging",
+    "notebookMime",
+    "notebookReplDocument",
+    "notebookVariableProvider"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🧪 TESTING
+  // ═══════════════════════════════════════════════════════════════
+  "testing": [
+    "testObserver",
+    "testRelatedCode"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🎨 UI & EDITOR
+  // ═══════════════════════════════════════════════════════════════
+  "ui": [
+    "codiconDecoration",
+    "contribDiffEditorGutterToolBarMenus",
+    "contribEditorContentMenu",
+    "contribLabelFormatterWorkspaceTooltip",
+    "contribMenuBarHome",
+    "contribMergeEditorMenus",
+    "contribMultiDiffEditorMenus",
+    "contribStatusBarItems",
+    "contribViewContainerTitle",
+    "contribViewsRemote",
+    "contribViewsWelcome",
+    "customEditorMove",
+    "diffCommand",
+    "diffContentOptions",
+    "editorHoverVerbosityLevel",
+    "editorInsets",
+    "quickDiffProvider",
+    "quickInputButtonLocation",
+    "quickPickItemTooltip",
+    "quickPickSortByLabel",
+    "statusBarItemTooltip",
+    "tabInputMultiDiff",
+    "tabInputTextMerge",
+    "treeViewActiveItem",
+    "treeViewMarkdownMessage",
+    "treeViewReveal",
+    "valueSelectionInQuickPick"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🔐 AUTH & IDENTITY
+  // ═══════════════════════════════════════════════════════════════
+  "auth": [
+    "authLearnMore",
+    "authSession",
+    "idToken"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🌐 REMOTE & TUNNELS
+  // ═══════════════════════════════════════════════════════════════
+  "remote": [
+    "canonicalUriProvider",
+    "contribRemoteHelp",
+    "externalUriOpener",
+    "portsAttributes",
+    "resolvers",
+    "tunnelFactory",
+    "tunnels"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 🔧 DEBUG
+  // ═══════════════════════════════════════════════════════════════
+  "debug": [
+    "contribDebugCreateConfiguration",
+    "debugVisualization"
+  ],
+
+  // ═══════════════════════════════════════════════════════════════
+  // 📦 MISC / OTHER
+  // ═══════════════════════════════════════════════════════════════
+  "other": [
+    "contribAccessibilityHelpContent",
+    "contribEditSessions",
+    "contribShareMenu",
+    "control",
+    "cursor",
+    "cursorNoDeps",
+    "cursorPublic",
+    "cursorTracing",
+    "documentFiltersExclusive",
+    "editSessionIdentityProvider",
+    "embeddings",
+    "extensionRuntime",
+    "extensionsAny",
+    "fsChunks",
+    "interactive",
+    "interactiveWindow",
+    "ipc",
+    "mcpConfigurationProvider",           // MCP! ⭐
+    "multiDocumentHighlightProvider",
+    "nativeWindowHandle",
+    "newSymbolNamesProvider",
+    "profileContentHandlers",
+    "shareProvider",
+    "speech",
+    "taskPresentationGroup",
+    "taskProblemMatcherStatus",
+    "telemetry",
+    "textEditorDiffInformation",
+    "timeline",
+    "tokenInformation",
+    "workspaceTrust"
+  ]
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ⭐ MOST INTERESTING FOR AI SKILLS PROJECT
+// ═══════════════════════════════════════════════════════════════
+// 
+// 1. "defaultChatParticipant"        - Register as default chat handler
+// 2. "chatParticipantAdditions"      - Add features to existing participants  
+// 3. "languageModelToolsForAgent"    - Provide tools to LM agents
+// 4. "mcpConfigurationProvider"      - MCP (Model Context Protocol) config!
+// 5. "chatProvider"                  - Provide chat functionality
+//
+// NOTE: "chatPromptFiles" is NOT available - likely internal Microsoft API
+// The Copilot extension we examined has access to private APIs we don't.

@@ -303,17 +303,17 @@ export function activate(context: vscode.ExtensionContext) {
     const copilotDir = getCopilotPromptsDir();
     const skills = loadSkills().filter((s) => !s.filename.startsWith('00-'));
 
-    let status = `**Copilot Prompts Directory:**\n\`${copilotDir}\`\n\n`;
+    let status = `📁 Copilot Prompts Directory:\n\n\`${copilotDir}\`\n\n`;
 
     if (!fs.existsSync(copilotDir)) {
       status += '⚠️ Directory does not exist\n';
     } else {
       const files = fs.readdirSync(copilotDir);
       const promptFiles = files.filter((f) => f.endsWith('.prompt.md') || f.endsWith('.md'));
-      status += `**Found ${promptFiles.length} prompt file(s)**\n\n`;
+      status += `Found ${promptFiles.length} prompt file(s)\n\n`;
 
       // Check which of our skills are synced
-      status += '**Skill Sync Status:**\n';
+      status += 'Skill Sync Status:\n\n';
       for (const skill of skills) {
         const targetName = skill.filename.replace('.skill.md', '.prompt.md');
         const exists = files.includes(targetName);

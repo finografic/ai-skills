@@ -2,7 +2,7 @@
 
 Portable, task-specific AI behavior controls.
 
-> **Demo?** See [DEMO.README.md](./DEMO.README.md)
+> **Demo?** See [DEMO.README.md](./docs/DEMO.README.md)
 
 ---
 
